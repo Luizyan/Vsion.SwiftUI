@@ -30,6 +30,14 @@ O Vsion é um projeto SwiftUI simples e extensível. A tela Home utiliza `Naviga
 - Componentização de views para reuso e manutenção.
 - Cálculos de total encapsulados na própria view que exibe os dados.
 
+### Autenticação (MVVM)
+Aplicamos o padrão de arquitetura **MVVM** na camada de autenticação, separando claramente responsabilidades:
+- **Model**: estruturas/entidades que representam o usuário e credenciais, além de serviços responsáveis por comunicação e validação.
+- **View**: telas SwiftUI responsáveis por renderizar o estado e encaminhar interações do usuário.
+- **ViewModel**: orquestra a lógica de autenticação, expõe estado observável para a View (ex.: progresso, erros, sessão) e chama serviços do Model.
+
+Essa separação facilita testes, manutenção e evolução da autenticação sem acoplamento indevido à interface.
+
 ## Requisitos
 - Xcode 15 ou superior (recomendado Xcode 26.2).
 - iOS 17 ou superior.
@@ -55,6 +63,7 @@ O Vsion é um projeto SwiftUI simples e extensível. A tela Home utiliza `Naviga
 - Separação de responsabilidades por view/componente.
 - Formatação de valores monetários utilizando `Locale.current.currency?.identifier` com fallback para `USD`.
 - Acessibilidade básica em listas (uso de `accessibilityElement` e rótulos descritivos quando aplicável).
+- Aplicação do padrão **MVVM** na camada de autenticação para separar responsabilidades (Model, View e ViewModel) e facilitar testes/manutenção.
 
 ## Testes
 - O projeto ainda não contém testes automatizados. Sugestões:
@@ -65,7 +74,6 @@ O Vsion é um projeto SwiftUI simples e extensível. A tela Home utiliza `Naviga
 ## Roadmap
 - Integrar estado compartilhado entre Home e TotalValue para refletir alterações em tempo real.
 - Adicionar persistência leve (ex.: `@AppStorage` ou SwiftData) para salvar carrinho.
-- Melhorias de acessibilidade e localizações (i18n/l10n).
 - Adicionar testes automatizados.
 
 ## Contribuição
@@ -73,5 +81,6 @@ Contribuições são bem-vindas! Para propor mudanças:
 1. Abra uma issue descrevendo a motivação.
 2. Crie um branch a partir da `main`.
 3. Envie um pull request com as alterações e descrição clara do impacto.
+
 
 
